@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>15 Años · Estilo 90s Silver & Black Text Party</title>
+<link href="https://fonts.googleapis.com/css2?family=Boogaloo&family=Righteous&family=Permanent+Marker&family=Fredoka+One&family=Russo+One&family=VT323&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --plat:#e0e0e0;--silver:#cccccc;--dark-silver:#666666;
+  --blk:#05050a;--card:rgba(15, 15, 20, 0.95);
+  --white:#ffffff;
+}
+html{scroll-behavior:smooth}
+body{background:var(--blk);font-family:'Righteous',cursive;color:var(--white);overflow-x:hidden;cursor:none}
+
+/* ── CURSOR INTERACTIVO PLATEADO ── */
+#cur{position:fixed;width:14px;height:14px;background:var(--white);clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);filter:drop-shadow(0 0 4px var(--silver));animation:starSpin 3s linear infinite}
+@keyframes starSpin{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+#cur-trail{position:fixed;width:8px;height:8px;background:var(--dark-silver);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .12s ease;mix-blend-mode:screen}
+
+/* ── NAV DOTS MONOCROMÁTICOS ── */
+#nav{position:fixed;right:16px;top:50%;transform:translateY(-50%);z-index:800;display:flex;flex-direction:column;gap:12px}
+.nd{width:12px;height:12px;clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);background:rgba(255,255,255,.3);cursor:none;transition:all .3s;border:none}
+.nd.active,.nd:hover{background:var(--white);transform:scale(1.5);filter:drop-shadow(0 0 8px var(--white))}
+
+/* ── MUSIC BTN RETRO ── */
+#mbtn{position:fixed;bottom:24px;right:24px;width:54px;height:54px;background:var(--blk);color:var(--white);border:3px solid var(--silver);font-size:20px;cursor:none;z-index:700;display:flex;align-items:center;justify-content:center;transition:all .3s;clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);animation:btnPulse 2s ease-in-out infinite}
+@keyframes btnPulse{0%,100%{filter:drop-shadow(0 0 5px var(--dark-silver))}50%{filter:drop-shadow(0 0 15px var(--silver)) drop-shadow(0 0 25px var(--white))}}
+#mbtn.playing{background:var(--white);color:var(--blk);border-color:var(--white)}
+
+/* ── SECCIONES GENERALES CON PARALLAX ── */
+section{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:80px 24px;
+  position:relative;
+  overflow:hidden;
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+}
+
+/* Capa oscura transparente para que las letras resalten */
+section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(5, 5, 12, 0.7), rgba(20, 20, 25, 0.75));
+  z-index: 1;
+}
+
+/* VIDEO DE FONDO PRIMERA SECCIÓN */
+.video-bg-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+#s0::before {
+  background: transparent;
+}
+
+/* Títulos con efecto Cromo Metálico/Plateado */
+.sec-title{font-family:'Permanent Marker',cursive;font-size:clamp(40px,9vw,65px);text-align:center;margin-bottom:4px;color:var(--white);text-shadow:3px 3px 0 var(--dark-silver), -1px -1px 0 var(--blk);position:relative;z-index:5}
+.sec-sub{font-family:'VT323',monospace;font-size:20px;letter-spacing:.3em;text-transform:uppercase;text-align:center;margin-bottom:36px;padding:4px 12px;background:var(--blk);color:var(--silver);display:inline-block;border:1px solid var(--silver);position:relative;z-index:5}
+
+.content-container{position:relative;z-index:5;width:100%;display:flex;flex-direction:column;align-items:center}
+
+/* ── FOTOS DE FONDO FIESTA OTRAS SECCIONES ── */
+#s1 { background-image: url('https://images.unsplash.com/photo-1506157786151-b8491531f063?q=80&w=1920&auto=format&fit=crop'); }
+#s2 { background-image: url('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=1920&auto=format&fit=crop'); }
+#s3 { background-image: url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1920&auto=format&fit=crop'); }
+#s4 { background-image: url('https://images.unsplash.com/photo-1574391884720-bbc3740c59d1?q=80&w=1920&auto=format&fit=crop'); }
+#s5 { background-image: url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1920&auto=format&fit=crop'); }
+#s6 { background-image: url('https://images.unsplash.com/photo-1545128485-c400e7702796?q=80&w=1920&auto=format&fit=crop'); }
+#s7 { background-image: url('https://images.unsplash.com/photo-1482440308425-276ad0f28b19?q=80&w=1920&auto=format&fit=crop'); }
+#s8 { background-image: url('https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=1920&auto=format&fit=crop'); }
+
+/* ── TARJETAS E INTERFACES EN NEGRO Y PLATA ── */
+.s0-content {
+  background: rgba(10, 10, 15, 0.85);
+  padding: 40px;
+  border: 4px dashed var(--silver);
+  box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+}
+.s0-15{font-family:'Boogaloo',cursive;font-size:clamp(130px,30vw,230px);line-height:.82;
+  background: linear-gradient(180deg, var(--white) 0%, var(--silver) 50%, var(--dark-silver) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  filter:drop-shadow(6px 6px 0 var(--blk));
+  font-weight: bold;
+}
+.s0-name{font-family:'Permanent Marker',cursive;font-size:clamp(45px,11vw,85px);
+  color:var(--white);text-shadow:4px 4px 0 var(--dark-silver),-4px -4px 0 var(--silver), 6px 6px 0 var(--blk)}
+
+.d-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;max-width:500px;width:100%}
+.d-card{background:var(--card);border:3px solid var(--silver);padding:20px 16px;text-align:center;box-shadow:6px 6px 0 var(--dark-silver);backdrop-filter:blur(8px)}
+.d-card .di {font-size:32px;margin-bottom:6px;}
+.d-card .dl {font-family:'VT323',monospace;font-size:16px;color:var(--silver);letter-spacing:2px}
+.d-full{grid-column:1/-1;border-color:var(--white);box-shadow:6px 6px 0 var(--silver)}
+
+.cd{display:flex;justify-content:center;gap:14px;margin-top:10px}
+.cdb{background:rgba(255,255,255,0.08);padding:6px;border:1px solid var(--silver)}
+.cn{font-family:'Boogaloo',cursive;font-size:46px;color:var(--white);text-shadow:2px 2px 0 var(--dark-silver)}
+
+.map-wrap{border:4px solid var(--white);box-shadow:10px 10px 0 var(--blk);width:100%;max-width:540px}
+.map-btn{background:var(--blk);border:3px solid var(--silver);font-weight:bold;cursor:none;padding:12px 20px;color:var(--white);text-decoration:none;text-transform:uppercase;font-size:12px;display:inline-block;box-shadow:4px 4px 0 var(--dark-silver)}
+.map-btn:hover{background:var(--white);color:var(--blk);border-color:var(--white)}
+
+.dc-pills{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;max-width:460px;margin-bottom:15px}
+.dcp{background:var(--blk);border:3px solid var(--silver);padding:10px 18px;font-weight:bold;color:var(--white);box-shadow:4px 4px 0 var(--dark-silver)}
+.dcp:hover{background:var(--white);color:var(--blk)}
+
+.rsvp-box{max-width:460px;width:100%;display:flex;flex-direction:column;gap:12px;background:var(--card);padding:24px;border:3px solid var(--white);box-shadow:8px 8px 0 var(--dark-silver);backdrop-filter:blur(8px)}
+.rsvp-box input,.rsvp-box select,.rsvp-box textarea{border:2px solid var(--silver);background:#111;font-size:14px;color:var(--white);padding:10px;width:100%}
+.rsvp-box label{font-family:'VT323',monospace;color:var(--silver);display:block;margin-bottom:4px}
+.rsvp-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+.gc{background:var(--card);border:3px solid var(--silver);box-shadow:6px 6px 0 var(--dark-silver);padding:16px;display:flex;align-items:center;justify-content:space-between;width:100%;max-width:430px;margin-bottom:10px;backdrop-filter:blur(8px)}
+.copy-btn{background:var(--white);color:var(--blk);font-weight:bold;border:none;box-shadow:2px 2px 0 var(--dark-silver);padding:6px 12px;cursor:none}
+
+.sf{background:var(--card);padding:20px;border:3px solid var(--silver);box-shadow:8px 8px 0 var(--dark-silver);width:100%;max-width:430px;backdrop-filter:blur(8px)}
+.sf input{width:100%;padding:10px;background:#111;border:2px solid var(--silver);color:#fff;margin-bottom:10px}
+.si{background:var(--blk);border:2px solid var(--silver);padding:10px;margin-top:8px;display:flex;align-items:center;gap:10px}
+
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:540px;width:100%}
+.gph{border:3px solid var(--silver);box-shadow:5px 5px 0 var(--blk);aspect-ratio:1;overflow:hidden}
+.gph img{width:100%;height:100%;object-fit:cover}
+
+/* DIVISORES ESTILO METAL ACANALADO */
+.divsor{height:16px;background:repeating-linear-gradient(-45deg, var(--silver), var(--silver) 10px, #222 10px, #222 20px);border-top:2px solid var(--white);border-bottom:2px solid var(--dark-silver);position:relative;z-index:10}
+.rainbow-div{height:16px;background:linear-gradient(90deg, #111, var(--silver), var(--white), var(--silver), #111);background-size:200% 100%;animation:silverMove 3s linear infinite;position:relative;z-index:10}
+@keyframes silverMove{from{background-position:0 0}to{background-position:200px 0}}
+
+@media(max-width:480px){
+  .d-grid,.rsvp-row{grid-template-columns:1fr}
+  .d-full{grid-column:auto}
+  .gallery{grid-template-columns:repeat(2,1fr)}
+  .gc{flex-direction:column;align-items:flex-start;gap:10px}
+}
+</style>
+</head>
+<body>
+
+<div id="cur"></div>
+<div id="cur-trail"></div>
+
+<nav id="nav">
+  <button class="nd active" onclick="goTo('s0')"></button>
+  <button class="nd" onclick="goTo('s1')"></button>
+  <button class="nd" onclick="goTo('s2')"></button>
+  <button class="nd" onclick="goTo('s3')"></button>
+  <button class="nd" onclick="goTo('s4')"></button>
+  <button class="nd" onclick="goTo('s5')"></button>
+  <button class="nd" onclick="goTo('s6')"></button>
+  <button class="nd" onclick="goTo('s7')"></button>
+</nav>
+
+<button id="mbtn" onclick="toggleMusic()">🎵</button>
+<div style="position:fixed;bottom:-9999px;left:-9999px;width:1px;height:1px;overflow:hidden;pointer-events:none;">
+  <iframe id="yt-player" src="" allow="autoplay" style="width:1px;height:1px;border:none;"></iframe>
+</div>
+
+<section id="s0">
+  <video autoplay loop muted playsinline class="video-bg-container">
+    <source src="video-fondo.mp4" type="video/mp4">
+    Tu navegador no soporta videos de fondo.
+  </video>
+  
+  <div class="s0-content">
+    <div class="s0-pre" style="color:var(--silver)">★ mis quince años ★</div>
+    <div class="s0-15">15</div>
+    <div class="s0-años" style="color:var(--silver)">años de pura actitud</div>
+    <div class="s0-name">Valentina</div>
+    <div style="width:100%; height:4px; background:var(--white); margin:15px 0;"></div>
+    <div class="s0-date" style="color:var(--silver)">>> Sábado 14 de Junio · 21:00 hs <<</div>
+  </div>
+</section>
+
+<div class="divsor"></div>
+
+<section id="s1">
+  <div class="content-container">
+    <div class="sec-title">★ La Fiesta ★</div>
+    <p class="sec-sub">> todos los detalles <</p>
+    <div class="d-grid">
+      <div class="d-card"><div class="di">📅</div><div class="dl">Fecha</div><div class="dv">Sábado<br>14 de Junio, 2026</div></div>
+      <div class="d-card"><div class="di">🕗</div><div class="dl">Hora</div><div class="dv">21:00 hs<br><small style="font-size:12px;color:var(--silver)">Recepción 20:30</small></div></div>
+      <div class="d-card"><div class="di">📍</div><div class="dl">Lugar</div><div class="dv">Salón Versailles<br>Av. Belgrano 1250</div></div>
+      <div class="d-card"><div class="di">👠</div><div class="dl">Dress Code</div><div class="dv">Negro & Plata<br>¡A brillar!</div></div>
+      <div class="d-card d-full">
+        <div class="dl" style="margin-bottom:10px; color:var(--white)">★ cuenta regresiva ★</div>
+        <div class="cd">
+          <div class="cdb"><div class="cn" id="cd-d">--</div><div class="cl">días</div></div>
+          <div class="cdb"><div class="cn" id="cd-h">--</div><div class="cl">horas</div></div>
+          <div class="cdb"><div class="cn" id="cd-m">--</div><div class="cl">min</div></div>
+          <div class="cdb"><div class="cn" id="cd-s">--</div><div class="cl">seg</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rainbow-div"></div>
+
+<section id="s2">
+  <div class="content-container">
+    <div class="sec-title">★ Cómo Llegar ★</div>
+    <p class="sec-sub">> ubicación del evento <</p>
+    <div class="map-wrap">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.1!2d-64.2667!3d-27.7833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjfCsDQ3JzAwLjAiUyA2NMKwMTYnMDAuMCJX!5e0!3m2!1ses!2sar!4v1234567890" allowfullscreen="" loading="lazy" style="width:100%; height:250px; border:none;"></iframe>
+    </div>
+    <div class="map-acts" style="margin-top:15px;">
+      <a class="map-btn" href="https://maps.google.com/?q=Av.+Belgrano+1250+Santiago+del+Estero" target="_blank">📍 Google Maps</a>
+      <a class="map-btn" href="https://waze.com/ul" target="_blank">🚗 Waze</a>
+    </div>
+  </div>
+</section>
+
+<div class="divsor"></div>
+
+<section id="s3">
+  <div class="content-container">
+    <div class="sec-title">★ Dress Code ★</div>
+    <p class="sec-sub" style="background:var(--white); color:var(--blk)">> elegante: negro y plata <</p>
+    <div class="dc-pills">
+      <div class="dcp">Total Black</div>
+      <div class="dcp">Destellos Plateados</div>
+      <div class="dcp">Accesorios de Espejo</div>
+      <div class="dcp">Plataformas 🙌</div>
+    </div>
+    <p class="dc-note" style="background:var(--blk); padding:5px 10px; border:2px solid var(--silver)">>> ¡A bailar con estilo! <<</p>
+  </div>
+</section>
+
+<div class="rainbow-div"></div>
+
+<section id="s4">
+  <div class="content-container">
+    <div class="sec-title">★ Confirmá ★</div>
+    <p class="sec-sub">> antes del 7 de junio <</p>
+    <div id="rsvp-form-wrap" style="width:100%; display:flex; justify-content:center;">
+      <div class="rsvp-box">
+        <div><label>> Tu nombre</label><input type="text" id="rn" placeholder="Nombre completo..."></div>
+        <div class="rsvp-row">
+          <div><label>> ¿Asistís?</label>
+            <select id="ra"><option value="">Seleccioná...</option><option value="si">✅ Sí, voy</option><option value="no">❌ No puedo</option></select>
+          </div>
+          <div><label>> Personas</label>
+            <select id="rq"><option value="1">1 persona</option><option value="2">2 personas</option></select>
+          </div>
+        </div>
+        <button class="map-btn" style="width:100%; margin-top:10px; background:var(--white); color:var(--blk); border-color:var(--white);" onclick="submitRsvp()">★ CONFIRMAR ASISTENCIA ★</button>
+      </div>
+    </div>
+    <div id="rsvp-ok" style="background:var(--blk); border:3px solid var(--silver); padding:20px; display:none; text-align:center;"><p id="rom">¡Confirmado! 🎉</p></div>
+  </div>
+</section>
+
+<div class="divsor"></div>
+
+<section id="s5">
+  <div class="content-container">
+    <div class="sec-title">★ Regalos ★</div>
+    <p class="sec-sub">> mesa de regalos <</p>
+    <div class="gc">
+      <div style="flex-grow:1">
+        <div style="font-family:'VT323',monospace; color:var(--silver)">CBU:</div>
+        <div style="font-size:14px;">0000003100012345678901</div>
+      </div>
+      <button class="copy-btn" onclick="cp('0000003100012345678901',this)">Copiar</button>
+    </div>
+    <div class="gc">
+      <div style="flex-grow:1">
+        <div style="font-family:'VT323',monospace; color:var(--silver)">ALIAS:</div>
+        <div style="font-size:14px;">valentina.15.fiesta</div>
+      </div>
+      <button class="copy-btn" onclick="cp('valentina.15.fiesta',this)">Copiar</button>
+    </div>
+  </div>
+</section>
+
+<div class="rainbow-div"></div>
+
+<section id="s6">
+  <div class="content-container">
+    <div class="sec-title">★ Playlist ★</div>
+    <p class="sec-sub">> sugerí una canción <</p>
+    <div class="sf">
+      <div><label>> Canción</label><input type="text" id="st" placeholder="Ej: Vogue..."></div>
+      <button class="map-btn" style="width:100%; background:var(--white); color:var(--blk); border-color:var(--white);" onclick="addSong()">★ AGREGAR ★</button>
+    </div>
+    <div class="sl" id="sl" style="width:100%; max-width:430px;">
+      <div class="si"><span class="sn">🎵</span><div><div class="sti">Vogue - Madonna</div></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divsor"></div>
+
+<section id="s7">
+  <div class="content-container">
+    <div class="sec-title">★ Galería ★</div>
+    <p class="sec-sub">> recuerdos especiales <</p>
+    <div class="gallery" id="gallery"></div>
+  </div>
+</section>
+
+<div class="rainbow-div"></div>
+
+<section id="s8">
+  <div class="cf" style="position:relative; z-index:5;">🌟</div>
+  <p class="cm" style="text-align:center; max-width:500px; font-size:24px; padding:20px; background:var(--card); border:2px dashed var(--silver);">"15 años de ser increíble.<br>¡Esta noche lo festejamos a lo grande!"</p>
+  <p style="font-family:'VT323',monospace; font-size:18px; color:var(--silver); margin-top:20px; background:var(--blk); padding:5px 10px; position:relative; z-index:5;">> Con amor · La familia <</p>
+</section>
+
+<script>
+/* cursor tracking */
+const cur=document.getElementById('cur'),trail=document.getElementById('cur-trail');
+let mx=0,my=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';setTimeout(()=>{trail.style.left=mx+'px';trail.style.top=my+'px';},80);});
+
+/* navegación scroll */
+const SIDS=['s0','s1','s2','s3','s4','s5','s6','s7','s8'];
+const nds=document.querySelectorAll('.nd');
+function goTo(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){const i=SIDS.indexOf(x.target.id);nds.forEach(n=>n.classList.remove('active'));if(i>=0)nds[i]?.classList.add('active')}}),{threshold:.3});
+SIDS.forEach(id=>{const el=document.getElementById(id);if(el)obs.observe(el)});
+
+/* temporizador al evento */
+const ev=new Date('2026-06-14T21:00:00');
+function upCD(){let d=ev-new Date();if(d<0)d=0;document.getElementById('cd-d').textContent=String(Math.floor(d/86400000)).padStart(2,'0');document.getElementById('cd-h').textContent=String(Math.floor((d%86400000)/3600000)).padStart(2,'0');document.getElementById('cd-m').textContent=String(Math.floor((d%3600000)/60000)).padStart(2,'0');document.getElementById('cd-s').textContent=String(Math.floor((d%60000)/1000)).padStart(2,'0');}
+upCD();setInterval(upCD,1000);
+
+/* interactividad de componentes */
+function submitRsvp(){document.getElementById('rsvp-form-wrap').style.display='none';document.getElementById('rsvp-ok').style.display='block';}
+function cp(txt,btn){navigator.clipboard.writeText(txt).then(()=>{btn.textContent='¡Listo!';setTimeout(()=>{btn.textContent='Copiar'},2000)})}
+function addSong(){const t=document.getElementById('st').value.trim();if(!t)return;const li=document.getElementById('sl'),d=document.createElement('div');d.className='si';d.innerHTML=`<span class="sn">🎵</span><div><div class="sti">${t}</div></div>`;li.appendChild(d);document.getElementById('st').value='';}
+
+/* fotos de la galería */
+const FOTOS=['https://picsum.photos/seed/b1/400/400','https://picsum.photos/seed/b2/400/400','https://picsum.photos/seed/b3/400/400'];
+document.addEventListener('DOMContentLoaded',()=>{
+  const gal=document.getElementById('gallery');
+  FOTOS.forEach((src)=>{const d=document.createElement('div');d.className='gph';d.innerHTML=`<img src="${src}" loading="lazy">`;gal.appendChild(d);});
+});
+
+let isPlaying=false;
+function toggleMusic(){
+  const btn=document.getElementById('mbtn'),p=document.getElementById('yt-player');
+  if(!isPlaying){isPlaying=true;p.src=`https://www.youtube-nocookie.com/embed/5eU_ln47GZQ?autoplay=1`;btn.innerHTML='⏸';}
+  else{isPlaying=false;p.src='';btn.innerHTML='🎵';}
+}
+</script>
+</body>
+</html>
